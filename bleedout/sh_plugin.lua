@@ -26,8 +26,3 @@ ix.util.Include("sh_configs.lua")
 ix.util.Include("sv_plugin.lua")
 ix.util.Include("sh_commands.lua")
 ix.util.Include("sv_hooks.lua")
-
-hook.Add("CAMI.PlayerHasAccess", "OverrideCAMI", function(actorPly)
-	if(!IsValid(actorPly)) then return end
-	if(actorPly:IsBot()) then return true end
-end)
