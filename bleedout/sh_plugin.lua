@@ -14,7 +14,6 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.]]
 
-
 ix.char.RegisterVar("Bleedout", {
     field = "bleedout_status",
     fieldType = ix.type.boolean,
@@ -27,3 +26,8 @@ ix.util.Include("sh_configs.lua")
 ix.util.Include("sv_plugin.lua")
 ix.util.Include("sh_commands.lua")
 ix.util.Include("sv_hooks.lua")
+
+hook.Add("CAMI.PlayerHasAccess", "OverrideCAMI", function(actorPly)
+	if(!IsValid(actorPly)) then return end
+	if(actorPly:IsBot()) then return true end
+end)

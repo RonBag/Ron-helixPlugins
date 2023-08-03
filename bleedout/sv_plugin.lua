@@ -18,9 +18,7 @@ function PLUGIN:EnterBleedout(player)
 
 	local time = ix.config.Get("BleedoutTime", 30)
 	
-
 	player:NotifyLocalized("bleedingOutLong")
-	--player:SetAction("@bleedingOut", time-1)
 	player:SetAction("", time-1)
 	
 	net.Start("BleedingOut")
@@ -30,7 +28,7 @@ function PLUGIN:EnterBleedout(player)
 
 	if(IsValid(ent)) then
 		local uid = "bleedouttime"..player:GetCharacter():GetID()
-		timer.Create(uid,time-1,1, function()
+		timer.Create(uid,time-1, 1, function()
 			if(IsValid(ent)) then
 				player:NotifyLocalized("bledOut")
 				ent.ixPlayer:Kill()
@@ -38,7 +36,6 @@ function PLUGIN:EnterBleedout(player)
 		end)
 	end
 end
-
 
 function PLUGIN:Revive(player)
 	local char = player:GetCharacter()
@@ -53,7 +50,3 @@ function PLUGIN:Revive(player)
 		net.Send(player)
 	end
 end
-
-hook.Add("Stabilize", "Stabilize", function(target) 
-	PLUGIN:Revive(target)
-end)

@@ -8,20 +8,21 @@ ITEM.functions.Stabilize = {
 	tip = "Stabilize the target character.",
 	icon = "icon16/user_add.png",
 	OnRun = function(item)
-        local ply = item.player
-        local trace = ply:GetEyeTraceNoCursor()
+		local player = item.player
+		local trace = player:GetEyeTraceNoCursor()
 		local target = trace.Entity
-        ply:SetAction("@stabilizing", 10)
-        ply:DoStaredAction(target, function()
-			hook.Run("Stabilize", target.ixPlayer)
-        end, 10)
+	
+		player:SetAction("@stabilizing", 10)
+		player:DoStaredAction(target, function()
+			hook.Run("Revive", target.ixPlayer)
+		end, 10)
 
 	end,
 
-    OnCanRun =  function(item)
-        local ply = item.player
-		local trace = ply:GetEyeTraceNoCursor()
+	OnCanRun =  function(item)
+		local player = item.player
+		local trace = player:GetEyeTraceNoCursor()
 		local target = trace.Entity
-        return target:GetClass()=="prop_ragdoll"
-    end
+		return target:GetClass()=="prop_ragdoll"
+	end
 }

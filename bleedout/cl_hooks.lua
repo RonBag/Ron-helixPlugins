@@ -1,4 +1,3 @@
-
 function PLUGIN:PopulateCharacterInfo(client, character, container)
 	if (client:Alive() and character:GetBleedout()) then
 		local panel = container:AddRow("bleedout")
