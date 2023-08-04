@@ -8,6 +8,12 @@ function PLUGIN:PopulateCharacterInfo(client, character, container)
 	end
 end
 
+function PLUGIN:GetInjuredText(client)
+	if(client:GetCharacter():GetBleedout()) then
+		return false
+	end
+end
+
 net.Receive("BleedingOut", function()
 	if (IsValid(ix.gui.bleedoutScreen)) then
 		ix.gui.bleedoutScreen:Remove()

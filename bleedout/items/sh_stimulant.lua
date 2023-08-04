@@ -1,5 +1,5 @@
 ITEM.name = "Stimulant"
-ITEM.model = "models/props_wasteland/prison_toiletchunk01f.mdl"
+ITEM.model = "models/props_c17/TrapPropeller_Lever.mdl"
 ITEM.description = "Used to stabilize a person who is bleeding out."
 ITEM.category = "Medical"
 
@@ -20,9 +20,8 @@ ITEM.functions.Stabilize = {
 	end,
 
 	OnCanRun =  function(item)
-		local player = item.player
-		local trace = player:GetEyeTraceNoCursor()
-		local target = trace.Entity
-		return target:GetClass()=="prop_ragdoll"
+		local ent = item.player:GetEyeTraceNoCursor().Entity
+
+		return ent:IsRagdoll(ent) and ent:IsPlayer()
 	end
 }

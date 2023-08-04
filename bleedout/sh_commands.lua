@@ -24,7 +24,7 @@ ix.command.Add("CharGetUp", {
 	end
 })
 
-ix.command.Add("acceptdeath", {
+ix.command.Add("AcceptDeath", {
 	description = "@cmdAcceptDeath",
 	OnRun = function(self, client, arguments)
 		
@@ -38,5 +38,21 @@ ix.command.Add("acceptdeath", {
 			client:NotifyLocalized("deathAccepted")
 		end
 		
+	end
+})
+
+ix.command.Add("CharAdminRevive", {
+	description = "@cmdAdminRevive",
+	adminOnly = true,
+	arguments = {
+		ix.type.character
+	},
+	OnRun = function(self, client, target)
+		
+		if(!target:GetBleedout()) then
+			return "@notNow"
+		end
+
+		PLUGIN:Revive(target.player)
 	end
 })

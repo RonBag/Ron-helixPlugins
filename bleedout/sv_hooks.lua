@@ -3,7 +3,7 @@ util.AddNetworkString("BleedingOut")
 function PLUGIN:PostPlayerDeath(ply)
 	local char = ply:GetCharacter()
 
-	if(char and char:GetBleedout()) then
+	if (char and char:GetBleedout()) then
 		char:SetBleedout(false)
 		net.Start("BleedingOut")
 		net.Send(ply)
@@ -17,5 +17,3 @@ hook.Add("PlayerSpawn", "Player_Spawned", function(ply)
 		ply:Kill()
 	end
 end)
-
-
