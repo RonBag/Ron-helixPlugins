@@ -10,10 +10,18 @@ function PLUGIN:PostPlayerDeath(ply)
 	end
 end
 
-hook.Add("PlayerSpawn", "Player_Spawned", function(ply)
-	local char = ply:GetCharacter()
-	if (char and char:GetBleedout()) then
-		ply:NotifyLocalized("bledOut")
-		ply:Kill()
+function PLUGIN:PlayerLoadedCharacter(client, character)
+	if (character and character:GetBleedout()) then
+		character:SetBleedout(false)
+		client:NotifyLocalized("bledOut")
+		client:Kill()
 	end
-end)
+end
+
+function PLUGIN:CanPlayerUseCharacter(client, character)
+	local currentCharacter = client:GetCharacter()
+
+	if (currentCharacter and currentCharacter:GetBleedout()) then
+		return false
+	end
+end

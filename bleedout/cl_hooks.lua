@@ -20,7 +20,10 @@ net.Receive("BleedingOut", function()
 		return
 	end
 
-	ix.gui.bleedoutScreen = vgui.Create("BleedingScreen")
+	if(LocalPlayer():GetCharacter():GetBleedout()) then
+		ix.gui.bleedoutScreen = vgui.Create("BleedingScreen")
+		return
+	end
 	
 end)
 
