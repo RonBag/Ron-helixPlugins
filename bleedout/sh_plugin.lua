@@ -3,7 +3,7 @@ local PLUGIN = PLUGIN
 
 PLUGIN.name = "Bleed out"
 PLUGIN.author = "Ron"
-PLUGIN.description = "Adds a bleedout system."
+PLUGIN.description = "Adds a bleed out system. Players will not enter the bleed out state if they take too much damage at once, and the bleed out state timer is configurable."
 PLUGIN.license = [[
 The MIT License (MIT)
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”),
