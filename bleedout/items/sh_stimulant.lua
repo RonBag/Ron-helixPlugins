@@ -11,6 +11,11 @@ ITEM.functions.Stabilize = {
 		local player = item.player
 		local trace = player:GetEyeTraceNoCursor()
 		local target = trace.Entity
+
+		if(!target.ixPlayer) then
+			player:Notify("You must be looking at a player!")
+			return false
+		end
 	
 		player:SetAction("@stabilizing", 10)
 		player:DoStaredAction(target, function()
@@ -21,7 +26,7 @@ ITEM.functions.Stabilize = {
 
 	OnCanRun =  function(item)
 		local ent = item.player:GetEyeTraceNoCursor().Entity
-
-		return ent:IsRagdoll(ent) and ent:IsPlayer()
+		
+		return ent:IsRagdoll()
 	end
 }
